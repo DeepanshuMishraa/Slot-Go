@@ -32,7 +32,30 @@ func getBet(balance uint) uint {
 	return bet
 }
 
+func generateSymbolArray(symbols map[string]uint) []string {
+	symbolArr := []string{}
+	for symbol, count := range symbols {
+		for i := 0; i < int(count); i++ {
+			symbolArr = append(symbolArr, symbol)
+		}
+	}
+
+	return symbolArr
+}
+
 func main() {
+	symbols := map[string]uint{
+		"A": 4,
+		"B": 7,
+		"C": 12,
+		"D": 20,
+	}
+	// multipliers := map[string]uint{
+	// 	"A" : 20,
+	// 	"B" : 10,
+	// 	"C" : 5,
+	// 	"D" : 2
+	// };
 	balance := uint(200)
 	getName()
 
@@ -44,5 +67,8 @@ func main() {
 
 		balance -= bet
 	}
+
+	symbolArr := generateSymbolArray(symbols)
+	fmt.Println(symbolArr)
 	fmt.Printf("Registered the Bet , Now you are left with (balance = $%d) \n", balance)
 }
